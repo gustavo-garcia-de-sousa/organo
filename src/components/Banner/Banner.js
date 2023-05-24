@@ -1,6 +1,6 @@
 import './Banner.css';
 
-function Banner() {
+function Banner() {//função que retorna o componente
     return (
 
         <header className="banner">
