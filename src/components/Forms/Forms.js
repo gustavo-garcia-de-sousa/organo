@@ -4,7 +4,7 @@ import Selected from '../Selected/Selected';
 import Buttons from '../Button/Button';
 import { useState } from 'react';
 
-const Forms = () => {
+const Forms = (props) => {
 
     const [nome, setNome] = useState('')//useState é um hook que permite que o componente tenha estado
     const [cargo, setCargo] = useState('')
@@ -12,8 +12,8 @@ const Forms = () => {
     const [pais, setPais] = useState('Brasil')
 
     const aoSalvar = (event) => {
-        event.preventDefault();//previne o comportamento padrão do formulário
-        console.log('formulário submetido =>', nome, cargo, imagem, pais);
+        event.preventDefault();//previne o comportamento padrão do formulário de recarregar a página
+        props.aoCadastrar({ nome, cargo, imagem, pais } )
     }
 
     return (
