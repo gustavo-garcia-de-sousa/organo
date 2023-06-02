@@ -9,10 +9,11 @@ const Forms = () => {
     const [nome, setNome] = useState('')//useState é um hook que permite que o componente tenha estado
     const [cargo, setCargo] = useState('')
     const [imagem, setImagem] = useState('')
+    const [pais, setPais] = useState('Brasil')
 
     const aoSalvar = (event) => {
         event.preventDefault();//previne o comportamento padrão do formulário
-        console.log('formulário submetido =>', nome, cargo, imagem);
+        console.log('formulário submetido =>', nome, cargo, imagem, pais);
     }
 
     return (
@@ -39,7 +40,12 @@ const Forms = () => {
                     value={imagem}
                     aoAlterar={value => setImagem(value)}
                 />
-                <Selected label="País" itens={['Brasil', 'Argentina', 'Chile', 'Uruguai', 'Paraguai']} />
+                <Selected
+                    label="País"
+                    itens={['Brasil', 'Argentina', 'Chile', 'Uruguai', 'Paraguai']}
+                    value={pais}
+                    aoAlterar={value => setPais(value)}
+                />
                 <Buttons> Criar Card </Buttons>
             </form>
         </section>
