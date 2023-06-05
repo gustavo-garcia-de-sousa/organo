@@ -2,6 +2,7 @@ import Banner from './components/Banner/Banner';
 import Forms from './components/Forms/Forms';
 import { useState } from 'react';
 import Groups from './components/Groups/Groups';
+import Footer from './components/Footer/Footer';
 
 function App() {//App.js é o componente pai, que chama os componentes filhos
 
@@ -57,6 +58,7 @@ function App() {//App.js é o componente pai, que chama os componentes filhos
             cadastrados={cadastrados.filter(cadastrado => cadastrado.pais === pais.nome)}
           />)}
       </header>
+      <Footer />
     </div>
   );
 }
