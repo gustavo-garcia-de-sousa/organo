@@ -7,19 +7,21 @@ import { useState } from 'react';
 const Forms = (props) => {
 
     const [nome, setNome] = useState('')//useState é um hook que permite que o componente tenha estado
-    const [cargo, setCargo] = useState('')
+    const [posicao, setPosicao] = useState('')
     const [imagem, setImagem] = useState('')
     const [pais, setPais] = useState('Brasil')
 
     const aoSalvar = (event) => {
         event.preventDefault();//previne o comportamento padrão do formulário de recarregar a página
-        props.aoCadastrar({ nome, cargo, imagem, pais } )
+        props.aoCadastrar({ nome, posicao, imagem, pais })
     }
+
+    const paises = ['Brasil', 'Argentina', 'Chile', 'Uruguai', 'Paraguai']
 
     return (
         <section className='forms'>
             <form onSubmit={aoSalvar}> {/*onSubmit é um evento que é disparado quando o formulário é submetido*/}
-                <h2>Formulário de Cadastro</h2>
+                <h2>Cadastro das Seleções</h2>
                 <TextField
                     required={true}
                     label="Nome"
@@ -29,10 +31,10 @@ const Forms = (props) => {
                 />
                 <TextField
                     required={true}
-                    label="Cargo"
-                    placeholder="Digite seu cargo"
-                    value={cargo}
-                    aoAlterar={value => setCargo(value)}
+                    label="Posição"
+                    placeholder="Digite sua posição"
+                    value={posicao}
+                    aoAlterar={value => setPosicao(value)}
                 />
                 <TextField
                     label="Imagem"
@@ -42,7 +44,7 @@ const Forms = (props) => {
                 />
                 <Selected
                     label="País"
-                    itens={['Brasil', 'Argentina', 'Chile', 'Uruguai', 'Paraguai']}
+                    itens={paises}
                     value={pais}
                     aoAlterar={value => setPais(value)}
                 />

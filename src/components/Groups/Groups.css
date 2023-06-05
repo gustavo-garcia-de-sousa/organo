@@ -1,0 +1,12 @@
+.groups {
+    text-align: center; /**center the groups */
+    padding: 2px; /** adicionar respiro */
+    background-color: #D9F7E9;
+}
+
+.groups h3 {
+    font-size: 32px;
+    border-bottom: 4px solid #57C268;
+    display: inline-block; /** para que o border-bottom não ocupe toda a linha */
+    padding-bottom: 8px;
+}
