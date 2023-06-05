@@ -44,8 +44,18 @@ function App() {//App.js é o componente pai, que chama os componentes filhos
     <div className="App">
       <header className="App-header">
         <Banner />
-        <Forms aoCadastrar={cadastrado => aoNovoCadastro(cadastrado)} />
-        {paises.map(pais => <Groups key={pais.nome} nome={pais.nome} corPrimaria={pais.corPrimaria} corSecundaria={pais.corSecundaria} />)}
+        <Forms
+          paises={paises.map(pais => pais.nome)} //para o array paises, é mapeado o nome de cada país e enviado para o componente Forms
+          aoCadastrar={cadastrado => aoNovoCadastro(cadastrado)}
+        />
+        {paises.map(
+          pais => <Groups
+            key={pais.nome}
+            nome={pais.nome}
+            corPrimaria={pais.corPrimaria}
+            corSecundaria={pais.corSecundaria}
+            cadastrados={cadastrados.filter(cadastrado => cadastrado.pais === pais.nome)}
+          />)}
       </header>
     </div>
   );

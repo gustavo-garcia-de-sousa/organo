@@ -14,14 +14,17 @@ const Forms = (props) => {
     const aoSalvar = (event) => {
         event.preventDefault();//previne o comportamento padrão do formulário de recarregar a página
         props.aoCadastrar({ nome, posicao, imagem, pais })
-    }
 
-    const paises = ['Brasil', 'Argentina', 'Chile', 'Uruguai', 'Paraguai']
+        setNome('')
+        setPosicao('')
+        setImagem('')
+        setPais('Brasil')
+    }
 
     return (
         <section className='forms'>
             <form onSubmit={aoSalvar}> {/*onSubmit é um evento que é disparado quando o formulário é submetido*/}
-                <h2>Cadastro das Seleções</h2>
+                <h2>Cadastro dos Jogadores da Seleções</h2>
                 <TextField
                     required={true}
                     label="Nome"
@@ -44,7 +47,7 @@ const Forms = (props) => {
                 />
                 <Selected
                     label="País"
-                    itens={paises}
+                    itens={props.paises}
                     value={pais}
                     aoAlterar={value => setPais(value)}
                 />
