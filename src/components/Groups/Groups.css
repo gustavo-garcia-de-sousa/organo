@@ -4,6 +4,7 @@
     padding: 2px;
     /** adicionar respiro */
     background-color: #D9F7E9;
+    position: relative;
 }
 
 .groups h3 {
@@ -19,4 +20,11 @@
     justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 32px;
+}
+
+.groups .input-color{
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    border-color: black;
 }

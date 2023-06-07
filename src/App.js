@@ -8,12 +8,7 @@ function App() {//App.js é o componente pai, que chama os componentes filhos
 
   const [cadastrados, setCadastrados] = useState([])
 
-  const aoNovoCadastro = (cadastrado) => {
-    console.log(cadastrado)
-    setCadastrados([...cadastrados, cadastrado])//spread operator é usado para copiar o array cadastrados e adicionar o novo cadastrado, este ... siginifica que o array cadastrados será copiado
-  }
-
-  const paises = [
+  const [paises, setPaises] = useState([
     {
       nome: 'Brasil',
       corPrimaria: '#82CFFA',
@@ -39,7 +34,25 @@ function App() {//App.js é o componente pai, que chama os componentes filhos
       corPrimaria: '#FEBA05',
       corSecundaria: '#FFF5D9',
     }
-  ]
+  ])
+
+  const aoNovoCadastro = (cadastrado) => {
+    console.log(cadastrado)
+    setCadastrados([...cadastrados, cadastrado])//spread operator é usado para copiar o array cadastrados e adicionar o novo cadastrado, este ... siginifica que o array cadastrados será copiado
+  }
+
+  const aoRetirarCadastro = () => {
+    console.log('Cadastro retirado')
+  }
+
+  const aoMudarCorPais = (cor, nome) => {
+    setPaises(paises.map(pais => {
+      if (pais.nome === nome) {
+        pais.corPrimaria = cor
+      }
+      return pais;
+    }))
+  }
 
   return (
     <div className="App">
@@ -49,13 +62,15 @@ function App() {//App.js é o componente pai, que chama os componentes filhos
           paises={paises.map(pais => pais.nome)} //para o array paises, é mapeado o nome de cada país e enviado para o componente Forms
           aoCadastrar={cadastrado => aoNovoCadastro(cadastrado)}
         />
-        {paises.map(
-          pais => <Groups
-            key={pais.nome}
+        {paises.map((pais, indice) =>
+          <Groups
+            key={indice}//o indice é usado para identificar cada grupo de cadastrados
             nome={pais.nome}
             corPrimaria={pais.corPrimaria}
             corSecundaria={pais.corSecundaria}
             cadastrados={cadastrados.filter(cadastrado => cadastrado.pais === pais.nome)}
+            aoDeletar={aoRetirarCadastro}
+            aoMudarCor={aoMudarCorPais}
           />)}
       </header>
       <Footer />
