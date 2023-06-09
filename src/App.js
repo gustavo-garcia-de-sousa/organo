@@ -11,29 +11,32 @@ function App() {//App.js é o componente pai, que chama os componentes filhos
   const [paises, setPaises] = useState([
     {
       nome: 'Brasil',
-      corPrimaria: '#82CFFA',
-      corSecundaria: '#E8F8FF',
+      cor: '#57C278'
     },
     {
       nome: 'Argentina',
-      corPrimaria: '#A6D157',
-      corSecundaria: '#F0F8E2',
-    },
-    {
-      nome: 'Chile',
-      corPrimaria: '#E06B69',
-      corSecundaria: '#FDE7E8',
-    },
-    {
-      nome: 'Uruguai',
-      corPrimaria: '#D86EBF',
-      corSecundaria: '#FAE5F5',
+      cor: '#82CFFA'
     },
     {
       nome: 'Paraguai',
-      corPrimaria: '#FEBA05',
-      corSecundaria: '#FFF5D9',
-    }
+      cor: '#A6D157'
+    },
+    {
+      nome: 'Uruguai',
+      cor: '#E06B69'
+    },
+    {
+      nome: 'Chile',
+      cor: '#DB6EBF'
+    },
+    {
+      nome: 'Peru',
+      cor: '#FFBA05'
+    },
+    {
+      nome: 'Colômbia',
+      cor: '#FF8A29'
+    },
   ])
 
   const aoNovoCadastro = (cadastrado) => {
@@ -48,7 +51,7 @@ function App() {//App.js é o componente pai, que chama os componentes filhos
   const aoMudarCorPais = (cor, nome) => {
     setPaises(paises.map(pais => {
       if (pais.nome === nome) {
-        pais.corPrimaria = cor
+        pais.cor = cor
       }
       return pais;
     }))
@@ -66,8 +69,7 @@ function App() {//App.js é o componente pai, que chama os componentes filhos
           <Groups
             key={indice}//o indice é usado para identificar cada grupo de cadastrados
             nome={pais.nome}
-            corPrimaria={pais.corPrimaria}
-            corSecundaria={pais.corSecundaria}
+            cor={pais.cor}
             cadastrados={cadastrados.filter(cadastrado => cadastrado.pais === pais.nome)}
             aoDeletar={aoRetirarCadastro}
             aoMudarCor={aoMudarCorPais}
